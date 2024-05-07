@@ -14,3 +14,6 @@ pre-commit install
 ```shell
 pre-commit uninstall
 ```
+
+# 手动对所有的文件执行hooks，新增hook的时候可以执行，使得代码均符合规范。直接执行该指令则无需等到pre-commit阶段再触发hooks
+pre-commit run --all-files
