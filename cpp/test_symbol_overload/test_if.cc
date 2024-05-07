@@ -15,13 +15,13 @@
 #include <iostream>
 
 class MyClass {
- public:
+public:
   explicit MyClass(int data = 0) : some_condition(data) {}
   // if operator bool not defined, it will raise error: could not convert ‘a’
   // from ‘MyClass’ to ‘bool’
   explicit operator bool() const { return some_condition > 0; }
 
- private:
+private:
   int some_condition;
 };
 
@@ -35,6 +35,7 @@ int main() {
   }
 
   MyClass b(-1);
+
   if (b) {
     std::cout << " true ====" << std::endl;
     // 如果 a 的 some_condition 为 true，则执行此代码块
