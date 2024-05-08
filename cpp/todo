@@ -1,0 +1,10 @@
+error: passing ‘const MyClass’ as ‘this’ argument discards qualifiers [-fpermissive]
+
+new
+https://blog.csdn.net/qq_35902025/article/details/127764973
+
+https://blog.csdn.net/qq_39200110/article/details/134710760
+
+单构造
+https://blog.csdn.net/m0_51860986/article/details/130238084
+https://blog.csdn.net/K346K346/article/details/82779248
