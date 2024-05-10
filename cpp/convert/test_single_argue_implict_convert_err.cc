@@ -3,7 +3,7 @@
 class MyClass {
 public:
   // 单参数构造函数
-  MyClass(int value) : m_value(value) {
+  explicit MyClass(int value) : m_value(value) {
     std::cout << "MyClass constructor called with value: " << m_value
               << std::endl;
   }
@@ -34,6 +34,7 @@ int main() {
   MyClass obj(42);
   // 直接使用int类型的值来调用需要MyClass类型参数的函数
   // 这里会发生隐式转换，即自动调用MyClass的单参数构造函数来创建一个临时的MyClass对象
+  // explicit 关键字阻止了隐式转换
   printMyClassValue(12);
 
   // outputs:
