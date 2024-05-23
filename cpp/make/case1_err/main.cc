@@ -20,3 +20,4 @@ int main() {
 // 第一次发现定义：main.cc include bb.h, bb.h include aa.h,
 // 发现aa.h里已经定义了f1() 第二次发现定义：编译 bb.cc, bb.cc include bb.h, bb.h
 // include aa.h, 发现aa.h里已经定义了f1() 这两次定义冲突
+// 报错发生在预处理后的编译阶段
