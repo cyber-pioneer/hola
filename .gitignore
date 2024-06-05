@@ -1,4 +1,7 @@
+*.a
+&.exe
 *.o
 *.log
+*.i
 .vscode
 **/build/
