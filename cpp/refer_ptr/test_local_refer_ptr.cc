@@ -6,12 +6,14 @@
 //   return localVariable;   // 错误：返回局部变量的引用
 // }
 
+// 传递输入指针或者引用
 // output: 3
 // int &getLocalVariableReference(int &a) {
 //   a = a+1;
 //   return a; // 输入的引用变量周期，生命周期与输入一致
 // }
 
+// 传递输入指针或者引用
 // x: 3, y: 3
 // int &getLocalVariableReference(int& a) {
 //   int& b = a;
