@@ -3,5 +3,7 @@
 *.o
 *.log
 *.i
+*.s
+*.out
 .vscode
 **/build/
