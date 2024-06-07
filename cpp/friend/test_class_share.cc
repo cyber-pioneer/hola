@@ -1,43 +1,46 @@
+
 #include <iostream>
+using namespace std;
 
-class ClassB; // 前置声明，因为ClassA中需要用到ClassB的指针或引用
-
-class ClassA {
-private:
-  int secretDataA = 100;
-
+class Date; //对Date类的提前引用声明
+class Time {
 public:
-  // 声明ClassB的成员函数为友元，使其能够访问ClassA的私有成员
-  friend void accessDataA(ClassB);
+  Time(int h, int m, int s) {
+    hour = h;
+    minute = m;
+    sec = s;
+  }
+  void display(Date &);
+
+private:
+  int hour;
+  int sec;
+  int minute;
 };
 
-class ClassB {
-private:
-  int secretDataB = 200;
-
+class Date {
 public:
-  // 用于访问ClassA的私有数据的函数
-  friend void ClassA::accessDataA(ClassA &a);
+  Date(int m, int d, int y) {
+    mouth = m;
+    day = d;
+    year = y;
+  }
+  friend void Time::display(Date &);
 
-  // 提供一个公开接口，允许ClassA访问ClassB的私有数据
-  int getSecretDataB() { return secretDataB; }
+private:
+  int mouth;
+  int day;
+  int year;
 };
 
-void ClassA::accessDataA(ClassA &a) {
-  std::cout << "ClassB can access ClassA's secret data: " << a.secretDataA
-            << std::endl;
+void Time::display(Date &d) {
+  cout << d.mouth << "/" << d.day << "/" << d.year << endl;
+  cout << hour << ":" << minute << ":" << sec << endl;
 }
 
-int main() {
-  ClassA a;
-  ClassB b;
-
-  // ClassB通过其成员函数访问ClassA的私有数据
-  b.accessDataA(a);
-
-  // 假设ClassA也需要访问ClassB的私有数据，可以通过ClassB的公开接口来实现
-  // std::cout << "ClassA can access ClassB's secret data: " <<
-  // b.getSecretDataB() << std::endl;
-
+int main(void) {
+  Time t1(10, 13, 56);
+  Date d1(4, 15, 2019);
+  t1.display(d1);
   return 0;
 }
