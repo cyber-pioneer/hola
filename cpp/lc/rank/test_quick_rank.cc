@@ -12,33 +12,19 @@ void check(std::vector<int> ref, std::vector<int> actual) {
   }
 }
 
-std::vector<int> dfs(std::vector<int> nums) {
-  int len = nums.size();
-  if (len <= 1) {
-    return nums;
-  }
-  std::vector<int> l;
-  std::vector<int> r;
-  int mid = len / 2; // mid可以是任意固定的索引，比如0
-  for (int i = 0; i < len; ++i) {
-    if (i == mid)
-      continue;
-    if (nums[i] >= nums[mid]) {
-      r.push_back(nums[i]);
-    } else {
-      l.push_back(nums[i]);
+void dfs(std::vector<int> &nums, int l, int r) {
+  if (l >= r)
+    return;
+  int mid = l;
+  for (int i = l; i <= r; i++) {
+    std::cout << l << mid << r << std::endl;
+    if (nums[i] < nums[mid]) {
+      std::swap(nums[mid], nums[i]);
+      mid = i;
     }
   }
-  std::vector<int> res;
-  for (auto i : dfs(l)) {
-    res.push_back(i);
-  }
-  res.push_back(
-      nums[mid]); // 注意这里是把中间的数插入到最后面，而不是在前面（因为前面已经排好序了
-  for (auto j : dfs(r)) {
-    res.push_back(j);
-  }
-  return res;
+  dfs(nums, l, mid);
+  dfs(nums, mid + 1, r);
 }
 
 int main() {
@@ -46,10 +32,10 @@ int main() {
 
   auto ref = org;
   std::sort(ref.begin(), ref.end());
-  auto res = dfs(org);
-  check(res, ref);
-  // for (auto x : res) {
-  //   std::cout << x << " ";
-  // }
+  dfs(org, 0, org.size() - 1);
+  // check(org, ref);
+  for (auto x : org) {
+    std::cout << x << " ";
+  }
   return 0;
 }
