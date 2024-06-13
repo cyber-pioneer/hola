@@ -19,3 +19,8 @@ emplace(Args&&... args): 在栈顶直接构造一个元素。
 
 访问方法
 top() const: 返回栈顶元素的引用。如果栈为空，则此操作是未定义的。
+
+
+介绍列表构造
+
+https://blog.csdn.net/qq_44228301/article/details/129629897
