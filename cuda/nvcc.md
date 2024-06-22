@@ -31,6 +31,7 @@ CUDA Toolkit安装：使用CUDA编译器之前，需要安装CUDA Toolkit。CUDA
 PATH环境变量设置：为了在任何目录下都能识别和使用nvcc编译器，需要将其路径添加到系统的PATH环境变量中。
 
 6. 示例
+与g++类似，nvcc也支持编译单个文件：
 ```shell
 nvcc matrixMul.cu -o main && ./main
 ```
