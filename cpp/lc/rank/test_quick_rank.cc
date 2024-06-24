@@ -12,23 +12,29 @@ void check(std::vector<int> ref, std::vector<int> actual) {
   }
 }
 
-void dfs(std::vector<int> &nums, int l, int r) {
-  if (l >= r)
+void dfs(std::vector<int> &nums, int l_n, int r_n) {
+  if (l_n >= r_n)
     return;
+  int l = l_n;
+  int r = r_n;
   int mid = l;
-  for (int i = l; i <= r; i++) {
-    std::cout << l << mid << r << std::endl;
-    if (nums[i] < nums[mid]) {
-      std::swap(nums[mid], nums[i]);
-      mid = i;
+  while (l < r) {
+    if (nums[r] >= nums[mid]) {
+      r--;
+    } else if (nums[l] <= nums[mid]) {
+      l++;
+    } else if (nums[l] > nums[r]) {
+      std::swap(nums[l], nums[r]);
     }
   }
-  dfs(nums, l, mid);
-  dfs(nums, mid + 1, r);
+  std::swap(nums[l], nums[mid]);
+
+  dfs(nums, l_n, mid);
+  dfs(nums, mid + 1, r_n);
 }
 
 int main() {
-  std::vector<int> org = {7, 2, 4, 5, 3, 3, 7};
+  std::vector<int> org = {2, 6, 5, 3, 3, 7};
 
   auto ref = org;
   std::sort(ref.begin(), ref.end());
