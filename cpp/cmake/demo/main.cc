@@ -1,3 +1,7 @@
+#include "fn.h"
 #include <iostream>
-
-int main() { std::cout << "hola ****" << std::endl; }
+int main() {
+  fn();
+  std::cout << "hola ****" << std::endl;
+  return 0;
+}
