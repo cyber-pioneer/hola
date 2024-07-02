@@ -7,9 +7,11 @@ void dfs(std::vector<int> &res, int l, int r) {
     return;
   int i = l;
   int j = r;
-  int tmp = res[l];
+  int tar_idx = l; // any index
+  int tmp = res[tar_idx];
   while (i < j) {
-    while (res[j] >= tmp && i < j) { // if not >=, 5,2,3,4,5, swap(5, 5);
+    while (res[j] >= tmp && i < j) { // if not >=, 5,2,3,4,5, swap(5, 5); // if
+                                     // i<=j ,i++ may > j or i may > j--
       j--;
     }
     while (res[i] < tmp && i < j) {
@@ -17,7 +19,7 @@ void dfs(std::vector<int> &res, int l, int r) {
     }
     std::swap(res[j], res[i]);
   }
-  std::swap(res[l], res[i]);
+  std::swap(res[tar_idx], res[i]);
   dfs(res, l, i);
   dfs(res, i + 1, r);
 }
