@@ -33,6 +33,7 @@ public:
 
 // 静态成员初始化
 Singleton *Singleton::instance = nullptr;
+// 注意，这里是初始化，不是赋值，因此不同使用 Singleton::instance = nullptr
 // 如果要在类定义内部初始化静态成员变量，那么该变量必须是常量表达式（constexpr），并且其类型必须是字面类型（literal
 // type,编译期能确定值），通常是内置类型、enum、有常量表达式初始化器的类类型等。
 
@@ -41,7 +42,8 @@ Singleton *Singleton::instance = nullptr;
 
 // 使用示例
 int main() {
-  Singleton *mySingleton = Singleton::getInstance(42); // 传入参数42
+  Singleton *mySingleton = Singleton::getInstance(42);  // 传入参数42
+  Singleton *mySingleton2 = Singleton::getInstance(41); // 传入参数41
   // ...
   return 0;
 }
