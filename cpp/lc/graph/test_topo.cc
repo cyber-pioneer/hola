@@ -67,7 +67,7 @@ int main() {
   int V = 5;
   graph.resize(V);
 
-  // 添加边（注意：拓扑排序的边是从尾指向头，即 1-->0）
+  // 添加边（注意：src-->next: 1-->0）
   graph[1].push_back(0);
   graph[2].push_back(0);
   graph[3].push_back(1);
