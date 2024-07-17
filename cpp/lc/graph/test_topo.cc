@@ -21,11 +21,17 @@ bool topologicalSortUtil(int v, vector<int> &sortOrder) {
 
     // 如果邻接节点未被访问且存在环（入度未减到0）
     if (indegree[node] >= 0 && !topologicalSortUtil(node, sortOrder)) {
+      std::cout << "a exist cycle ****" << std::endl;
       return false;
     }
   }
 
   // 将当前节点添加到结果排序中
+  std::cout << "push node " << v << std::endl;
+  for (auto it : indegree) {
+    std::cout << it << " ";
+  }
+  std::cout << std::endl;
   sortOrder.push_back(v);
   return true;
 }
@@ -46,6 +52,7 @@ bool topologicalSort(int V) {
   // 遍历所有节点，如果节点入度为0，则递归访问其邻接节点
   for (int i = 0; i < V; ++i) {
     if (indegree[i] == 0 && !topologicalSortUtil(i, sortOrder)) {
+      std::cout << "b exist cycle ****" << std::endl;
       return false; // 如果图中存在环，则返回false
     }
   }
@@ -64,15 +71,16 @@ bool topologicalSort(int V) {
 
 int main() {
   // 创建一个有5个节点的图
-  int V = 5;
+  int V = 4;
   graph.resize(V);
 
   // 添加边（注意：src-->next: 1-->0）
-  graph[1].push_back(0);
-  graph[2].push_back(0);
-  graph[3].push_back(1);
-  graph[3].push_back(2);
-  graph[4].push_back(2);
+  graph[0].push_back(1);
+  graph[0].push_back(2);
+  graph[2].push_back(1);
+  graph[2].push_back(3);
+  graph[1].push_back(3);
+  graph[1].push_back(2);
 
   // 调用拓扑排序函数
   if (topologicalSort(V)) {
